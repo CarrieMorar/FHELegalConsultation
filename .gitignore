@@ -1,0 +1,49 @@
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Hardhat files
+cache/
+artifacts/
+typechain-types/
+
+# Node modules
+node_modules/
+
+# Coverage files
+coverage/
+coverage.json
+.coverage_artifacts/
+.coverage_cache/
+
+# Build files
+dist/
+build/
+
+# Deployment files (optional - keep if you want to track deployments)
+# deployments/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+.tmp/
+
+# Compiled files
+*.tsbuildinfo
