@@ -1,0 +1,14 @@
+# Directories
+node_modules/
+artifacts/
+cache/
+coverage/
+typechain-types/
+
+# Test files
+test/
+scripts/
+
+# Build output
+dist/
+build/
