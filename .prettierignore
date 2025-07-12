@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+artifacts/
+cache/
+coverage/
+typechain-types/
+dist/
+build/
+
+# Deployment files
+deployments/
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
