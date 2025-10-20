@@ -8,9 +8,11 @@
 [![Tests](https://img.shields.io/badge/Tests-75%20passing-brightgreen)](./TESTING.md)
 [![Coverage](https://img.shields.io/badge/Coverage-95%25%2B-brightgreen)](https://codecov.io/)
 
-🌐 **[Live Demo](https://anonymous-legal-consultation.vercel.app/)** | 📺 **[Video Demo](#-demo-video)** | 📚 **[Documentation](#-documentation)**
+🌐 **[Live Demo](https://fhe-legal-consultation.vercel.app/)** | 📺 **Video Demo: demo.mp4 (download to watch)** | 📚 **[Documentation](#-documentation)**
 
 A revolutionary blockchain-based legal consultation platform that leverages **Fully Homomorphic Encryption (FHE)** to provide completely private, anonymous legal consultations. Built on the Zama FHEVM network, this platform ensures that sensitive legal questions and lawyer responses remain encrypted on-chain, accessible only to authorized parties.
+
+**GitHub Repository**: [https://github.com/CarrieMorar/FHELegalConsultation](https://github.com/CarrieMorar/FHELegalConsultation)
 
 Built for the **Zama FHE Challenge** - demonstrating practical privacy-preserving applications in the legal services industry.
 
@@ -18,6 +20,7 @@ Built for the **Zama FHE Challenge** - demonstrating practical privacy-preservin
 
 ## 📋 Table of Contents
 
+- [🔑 Core Concepts](#-core-concepts)
 - [✨ Features](#-features)
 - [🏗️ Architecture](#️-architecture)
 - [🔧 Technical Implementation](#-technical-implementation)
@@ -28,13 +31,74 @@ Built for the **Zama FHE Challenge** - demonstrating practical privacy-preservin
 - [📖 Usage Guide](#-usage-guide)
 - [🔐 Privacy Model](#-privacy-model)
 - [💻 Tech Stack](#-tech-stack)
-- [🎥 Demo Video](#-demo-video)
 - [📚 Documentation](#-documentation)
 - [🛠️ Development](#️-development)
 - [🤝 Contributing](#-contributing)
 - [🗺️ Roadmap](#️-roadmap)
 - [🔗 Links](#-links)
 - [📄 License](#-license)
+
+---
+
+## 🔑 Core Concepts
+
+### FHE-Powered Confidential Legal Services
+
+This platform demonstrates **Fully Homomorphic Encryption (FHE)** applied to real-world legal consultation scenarios, similar to how confidential public transit systems protect rider privacy while enabling analytics.
+
+**Key Privacy Concepts:**
+
+**1. Confidential Data Processing**
+Like encrypted transit card data that allows aggregate analysis without revealing individual trips, our platform enables:
+- **Encrypted Client Questions** - Legal inquiries stored in encrypted form on-chain
+- **Homomorphic Computations** - Category matching and assignment without decryption
+- **Private Responses** - Lawyer answers remain confidential
+- **Aggregate Statistics** - Platform metrics computed on encrypted data
+
+**2. FHE Contract Architecture**
+```solidity
+// Encrypted data types (like encrypted transit records)
+euint32 clientIdEnc;        // Anonymous client identifier
+euint32 categoryEnc;        // Encrypted legal category
+euint32 ratingEnc;          // Encrypted lawyer rating
+eaddress lawyerAddressEnc;  // Encrypted lawyer identity
+```
+
+**3. Zero-Knowledge Consultations**
+Similar to how transit systems can analyze usage patterns without identifying individual riders:
+- Clients submit questions without revealing identity
+- Platform assigns consultations without seeing content
+- Lawyers respond to encrypted queries
+- Only authorized parties can decrypt specific data
+
+**4. Homomorphic Operations**
+```solidity
+// Compare encrypted categories without decryption
+ebool isMatch = FHE.eq(lawyerSpecialty, consultationCategory);
+
+// Update ratings using encrypted arithmetic
+euint32 newRating = FHE.add(currentRating, incrementEnc);
+```
+
+**5. Confidential Public Services**
+The platform demonstrates how FHE enables:
+- **Public Service Delivery** - Anyone can access legal consultation
+- **Private Interactions** - Individual consultations remain confidential
+- **Transparent Operations** - Smart contract logic is public
+- **Encrypted State** - Sensitive data always encrypted
+
+### Why FHE for Legal Services?
+
+Traditional approaches expose data:
+- ❌ Plaintext databases reveal all consultations
+- ❌ Client-side encryption limits smart contract functionality
+- ❌ Trusted execution requires centralized authorities
+
+**FHE Solution:**
+- ✅ Data encrypted on-chain
+- ✅ Smart contracts compute on encrypted data
+- ✅ Decentralized and trustless
+- ✅ Selective decryption for authorized parties
 
 ---
 
@@ -169,7 +233,7 @@ anonymous-legal-consultation/
 import "@fhenixprotocol/contracts/FHE.sol";
 
 contract AnonymousLegalConsultation {
-    // Encrypted client IDs
+    // Encrypted client IDs (like encrypted transit card numbers)
     mapping(uint256 => euint32) private clientIdEnc;
 
     // Encrypted lawyer specialties
@@ -195,10 +259,10 @@ function assignConsultation(uint256 consultationId, uint256 lawyerId)
     euint32 lawyerSpecialty = lawyers[lawyerId].specialtyEnc;
     euint32 consultationCategory = consultations[consultationId].categoryEnc;
 
-    // FHE equality check
+    // FHE equality check (without decryption)
     ebool isMatch = FHE.eq(lawyerSpecialty, consultationCategory);
 
-    // Assign if match (in real implementation)
+    // Assign if match
     consultations[consultationId].assignedLawyer = lawyerId;
     consultations[consultationId].status = ConsultationStatus.Assigned;
 }
@@ -282,8 +346,8 @@ contract AnonymousLegalConsultation {
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/yourusername/anonymous-legal-consultation.git
-cd anonymous-legal-consultation
+git clone https://github.com/CarrieMorar/FHELegalConsultation.git
+cd FHELegalConsultation
 
 # 2. Install dependencies
 npm install
@@ -316,8 +380,8 @@ npm run deploy:sepolia
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/anonymous-legal-consultation.git
-cd anonymous-legal-consultation
+git clone https://github.com/CarrieMorar/FHELegalConsultation.git
+cd FHELegalConsultation
 
 # Install dependencies
 npm install
@@ -830,11 +894,13 @@ Lawyer Provides Response
 
 ---
 
-## 🎥 Demo Video
+## 📺 Demo Video
 
 ### Watch the Platform in Action
 
-**📺 [View Full Demo Video](./AnonymousLegalConsultation.mp4)**
+**Video File**: `demo.mp4` (download to watch)
+
+**Note**: The demo video is included in the repository. Please download the file to your local machine to watch the demonstration. Direct streaming links are not available.
 
 **Video Highlights:**
 - 00:00 - Platform overview and wallet connection
@@ -844,10 +910,6 @@ Lawyer Provides Response
 - 07:10 - Lawyer providing encrypted response
 - 09:00 - Client viewing consultation results
 - 10:30 - Platform statistics and analytics
-
-**Screenshots:**
-
-Coming soon - see live demo at [https://anonymous-legal-consultation.vercel.app/](https://anonymous-legal-consultation.vercel.app/)
 
 ---
 
@@ -1026,8 +1088,8 @@ We welcome contributions from developers, legal professionals, and privacy advoc
 
 **1. Fork the Repository:**
 ```bash
-git clone https://github.com/yourusername/anonymous-legal-consultation.git
-cd anonymous-legal-consultation
+git clone https://github.com/CarrieMorar/FHELegalConsultation.git
+cd FHELegalConsultation
 ```
 
 **2. Create a Feature Branch:**
@@ -1184,9 +1246,10 @@ git push origin feature/your-feature-name
 ### Official Resources
 
 **Project Links:**
-- 🌐 **Live Demo**: [https://anonymous-legal-consultation.vercel.app/](https://anonymous-legal-consultation.vercel.app/)
-- 📱 **GitHub Repository**: [https://github.com/yourusername/anonymous-legal-consultation](https://github.com/yourusername/anonymous-legal-consultation)
+- 🌐 **Live Demo**: [https://fhe-legal-consultation.vercel.app/](https://fhe-legal-consultation.vercel.app/)
+- 📱 **GitHub Repository**: [https://github.com/CarrieMorar/FHELegalConsultation](https://github.com/CarrieMorar/FHELegalConsultation)
 - 🔍 **Sepolia Contract**: [View on Etherscan](https://sepolia.etherscan.io/address/0xBA9Daca2dEE126861963cd31752A9aCBc5488Df7)
+- 📺 **Demo Video**: `demo.mp4` (download to watch)
 
 **Zama FHEVM:**
 - 📚 **Zama Documentation**: [https://docs.zama.ai/](https://docs.zama.ai/)
@@ -1208,7 +1271,6 @@ git push origin feature/your-feature-name
 **Community:**
 - 💬 **GitHub Issues**: Report bugs or request features
 - 📣 **GitHub Discussions**: Ask questions and share ideas
-- 🐦 **Twitter**: Follow for updates (coming soon)
 
 ---
 
@@ -1279,9 +1341,7 @@ While we use state-of-the-art encryption (FHE) to protect consultation content, 
 
 **Reporting Security Issues:**
 
-If you discover a security vulnerability, please email: security@anonymous-legal.example.com
-
-**Do NOT** open a public GitHub issue for security vulnerabilities.
+If you discover a security vulnerability, please open a GitHub issue or contact the development team.
 
 **Security Features:**
 - ✅ Audited smart contract code
