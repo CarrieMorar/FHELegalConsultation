@@ -7,14 +7,33 @@
 [![Hardhat](https://img.shields.io/badge/Hardhat-2.19.4-orange)](https://hardhat.org/)
 [![Tests](https://img.shields.io/badge/Tests-75%20passing-brightgreen)](./TESTING.md)
 [![Coverage](https://img.shields.io/badge/Coverage-95%25%2B-brightgreen)](https://codecov.io/)
+[![React](https://img.shields.io/badge/React-18.2-61DAFB?logo=react)](https://reactjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 
-🌐 **[Live Demo](https://fhe-legal-consultation.vercel.app/)** | 📺 **Video Demo: demo.mp4 (download to watch)** | 📚 **[Documentation](#-documentation)**
+🌐 **[Live Demo](https://fhe-legal-consultation.vercel.app/)** | 📺 **Video Demo: demo.mp4 (download to watch)** | 📚 **[Documentation](#-documentation)** | ⚛️ **[React Version](#react-application-quick-start-new-)**
 
 A revolutionary blockchain-based legal consultation platform that leverages **Fully Homomorphic Encryption (FHE)** to provide completely private, anonymous legal consultations. Built on the Zama FHEVM network, this platform ensures that sensitive legal questions and lawyer responses remain encrypted on-chain, accessible only to authorized parties.
 
 **GitHub Repository**: [https://github.com/CarrieMorar/FHELegalConsultation](https://github.com/CarrieMorar/FHELegalConsultation)
 
 Built for the **Zama FHE Challenge** - demonstrating practical privacy-preserving applications in the legal services industry.
+
+---
+
+## 🆕 What's New - React Application
+
+**Now available: Modern React/Next.js version with full SDK integration!**
+
+This repository now includes a complete, production-ready React application (`AnonymousLegalConsultation/`) featuring:
+- ⚛️ **Next.js 14** with App Router and TypeScript
+- 🎨 **Tailwind CSS** for professional, responsive UI
+- 🔌 **FHEVM SDK Integration** with Provider pattern
+- 🪝 **Custom Hooks** for wallet and FHE operations
+- 📱 **Multi-Portal Interface** (Client, Lawyer, Admin, Statistics)
+- 🚀 **Production-Ready** with optimized build
+
+[Quick Start Guide](#react-application-quick-start-new-) | [Tech Stack](#2-react-application-new-)
 
 ---
 
@@ -129,11 +148,22 @@ Traditional approaches expose data:
 - 🔒 **DoS Protection** - Rate limiting and gas limits
 - 🚨 **Emergency Controls** - Admin pause system
 
+**Modern Frontend (New) ✨:**
+- ⚛️ **React/Next.js Application** - Modern, type-safe frontend with full SDK integration
+- 🎨 **Professional UI** - Tailwind CSS with responsive design
+- 🔌 **Provider Pattern** - FHE context provider for seamless encryption
+- 🪝 **Custom Hooks** - `useWallet()`, `useFHEContext()` for clean state management
+- 📱 **Multi-Portal Interface** - Client, Lawyer, Admin, and Statistics dashboards
+- 🚀 **Optimized Performance** - Next.js SSR and build optimization
+- 💪 **TypeScript** - Full type safety across components and contracts
+
 ---
 
 ## 🏗️ Architecture
 
 ### System Overview
+
+#### Traditional Stack (Static HTML)
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -154,6 +184,56 @@ Traditional approaches expose data:
 │   │         FHE Encryption/Decryption Layer            │   │
 │   │   (euint32, eaddress, encrypted strings)           │   │
 │   └────────────────────────────────────────────────────┘   │
+└───────────────────────┬──────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Zama FHEVM Network (Sepolia)                   │
+│        (Immutable, Encrypted, Decentralized)                │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Modern React Stack (New) ✨
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│             React Application Layer (Next.js)                │
+│                                                              │
+│   ┌────────────────────────────────────────────────────┐   │
+│   │          FHE Provider (React Context)              │   │
+│   │     createFhevmInstance, config, init()            │   │
+│   └──────────────────┬─────────────────────────────────┘   │
+│                      │                                       │
+│   ┌──────────────────▼──────────────────────────────────┐  │
+│   │           Custom React Hooks                        │  │
+│   │   useWallet() • useFHEContext() • useEncrypt()      │  │
+│   └──────────────────┬──────────────────────────────────┘  │
+│                      │                                       │
+│   ┌──────────────────▼──────────────────────────────────┐  │
+│   │            Component Architecture                    │  │
+│   │                                                      │  │
+│   │  ┌─────────────┐  ┌─────────────┐  ┌──────────┐   │  │
+│   │  │   Client    │  │   Lawyer    │  │  Admin   │   │  │
+│   │  │   Section   │  │   Section   │  │  Section │   │  │
+│   │  └─────────────┘  └─────────────┘  └──────────┘   │  │
+│   │                                                      │  │
+│   │  ┌─────────────┐  ┌──────────────┐                │  │
+│   │  │    View     │  │     Stats    │                │  │
+│   │  │   Section   │  │    Section   │                │  │
+│   │  └─────────────┘  └──────────────┘                │  │
+│   └──────────────────┬──────────────────────────────────┘  │
+└────────────────────┬─┴───────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Ethers.js v6 + Contract Instance                │
+│               (Type-safe ABI interactions)                   │
+└───────────────────────┬──────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────────────┐
+│                  Smart Contract Layer                        │
+│        AnonymousLegalConsultation.sol (FHE-enabled)         │
 └───────────────────────┬──────────────────────────────────────┘
                         │
                         ▼
@@ -371,6 +451,37 @@ npm run deploy:sepolia
 **Network**: Sepolia Testnet (Chain ID: 11155111)
 **Contract Address**: `0xBA9Daca2dEE126861963cd31752A9aCBc5488Df7`
 **Explorer**: [View on Sepolia Etherscan](https://sepolia.etherscan.io/address/0xBA9Daca2dEE126861963cd31752A9aCBc5488Df7)
+
+### React Application Quick Start (New) ✨
+
+Want to try the modern React version? It's already set up!
+
+```bash
+# Navigate to the React application
+cd AnonymousLegalConsultation
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Visit http://localhost:3000
+```
+
+**What you get:**
+- ✅ Full Next.js 14 application with TypeScript
+- ✅ FHEVM SDK integration with provider pattern
+- ✅ Professional UI with Tailwind CSS
+- ✅ Complete legal consultation platform (Client, Lawyer, Admin portals)
+- ✅ Real-time wallet connection and contract interactions
+
+**Features:**
+- 📝 Submit encrypted legal consultations
+- 👁️ View consultation status and responses
+- ⚖️ Lawyer registration and response system
+- 🔧 Admin panel for platform management
+- 📊 Real-time statistics dashboard
 
 ---
 
@@ -833,15 +944,18 @@ Lawyer Provides Response
 - **OpenZeppelin** - Secure contract standards
 - **Hardhat** - Development environment
 
-### Frontend (Live Demo)
+### Frontend
+
+#### 1. Static Demo (Live)
 
 ```json
 {
-  "frontend": {
+  "frontend_static": {
     "framework": "HTML5/CSS3/JavaScript",
     "web3": "Ethers.js v6.10.0",
     "wallet": "MetaMask integration",
-    "hosting": "Vercel"
+    "hosting": "Vercel",
+    "demo": "https://fhe-legal-consultation.vercel.app/"
   }
 }
 ```
@@ -851,6 +965,71 @@ Lawyer Provides Response
 - **JavaScript (ES6+)** - Interactive functionality
 - **Ethers.js** - Blockchain interaction
 - **MetaMask** - Wallet connection
+
+#### 2. React Application (New) ✨
+
+```json
+{
+  "frontend_react": {
+    "framework": "Next.js 14 (App Router)",
+    "language": "TypeScript 5.3",
+    "ui_library": "React 18.2",
+    "styling": "Tailwind CSS 3.3 + PostCSS",
+    "web3": "Ethers.js v6.9.0",
+    "fhe_sdk": "@fhevm/sdk (workspace)",
+    "wallet": "MetaMask integration",
+    "state": "React Hooks + Context API",
+    "build": "Next.js optimized build"
+  }
+}
+```
+
+**Technologies:**
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Full type safety and IntelliSense
+- **React 18** - Component-based architecture with Hooks
+- **Tailwind CSS** - Utility-first CSS framework
+- **FHEVM SDK** - Integrated encryption library
+- **Ethers.js v6** - Modern blockchain interaction
+- **React Context** - Global state management for FHE and wallet
+
+**React Application Structure:**
+```
+AnonymousLegalConsultation/
+├── src/
+│   ├── app/                      # Next.js App Router
+│   │   ├── layout.tsx           # Root layout with FHE Provider
+│   │   ├── page.tsx             # Main application
+│   │   └── globals.css          # Tailwind + custom styles
+│   ├── components/               # React components
+│   │   ├── FHEProvider.tsx      # FHE context provider
+│   │   ├── WalletConnect.tsx    # Wallet connection UI
+│   │   ├── StatusMessage.tsx    # Toast notifications
+│   │   └── sections/            # Feature sections
+│   │       ├── ClientSection.tsx    # Client portal
+│   │       ├── ViewSection.tsx      # View consultations
+│   │       ├── LawyerSection.tsx    # Lawyer portal
+│   │       ├── AdminSection.tsx     # Admin panel
+│   │       └── StatsSection.tsx     # Statistics
+│   ├── hooks/                    # Custom React hooks
+│   │   └── useWallet.ts         # Wallet connection hook
+│   ├── lib/                      # Utilities
+│   │   └── contract.ts          # Contract ABI & constants
+│   └── types/                    # TypeScript definitions
+│       └── index.ts             # Type definitions
+├── package.json
+├── tsconfig.json
+├── next.config.js
+└── tailwind.config.ts
+```
+
+**Key Features:**
+- ✅ Full SDK integration with FHE Provider pattern
+- ✅ Type-safe contract interactions
+- ✅ Responsive design for mobile/desktop
+- ✅ Component-based architecture
+- ✅ Optimized performance with SSR
+- ✅ Professional UI/UX with Tailwind CSS
 
 ### Development Tools
 
