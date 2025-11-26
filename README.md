@@ -24,8 +24,9 @@ A revolutionary blockchain-based legal consultation platform that leverages **Fu
 - ✅ **Comprehensive Security**: Input validation, access control, rate limiting, audit logging
 - ✅ **Gas Optimized**: HCU-aware operations for efficient on-chain computation
 
-Video :https://youtu.be/6CL3Kw6Z9RM
-Live Demo:https://fhe-legal-consultation.vercel.app/
+- 🔄 **Video** - https://youtu.be/6CL3Kw6Z9RM
+- 🔄 **Live Demo** - https://fhe-legal-consultation.vercel.app/
+ 
 ---
 
 ## 📋 Table of Contents
